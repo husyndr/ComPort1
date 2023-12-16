@@ -1,0 +1,5 @@
+C:\Users\dereh\source\repos\ComPort1\ComPort1\obj\Debug\ComPort1.csproj.AssemblyReference.cache
+C:\Users\dereh\source\repos\ComPort1\ComPort1\obj\Debug\ButonEklemeUygulamasi.Form1.resources
+C:\Users\dereh\source\repos\ComPort1\ComPort1\obj\Debug\ComPort1.Properties.Resources.resources
+C:\Users\dereh\source\repos\ComPort1\ComPort1\obj\Debug\ComPort1.csproj.GenerateResource.cache
+C:\Users\dereh\source\repos\ComPort1\ComPort1\obj\Debug\ComPort1.csproj.CoreCompileInputs.cache

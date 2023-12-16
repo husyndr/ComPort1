@@ -1,4 +1,4 @@
-﻿namespace ButonEklemeUygulamasi
+﻿namespace ComPort1
 {
     partial class Form1
     {

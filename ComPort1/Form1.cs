@@ -8,33 +8,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ButonEklemeUygulamasi
+namespace ComPort1
 {
     public partial class Form1 : Form
     {
-        public Form1() => InitializeComponent();
-
-        private void Form1_Load(object sender, EventArgs e)
+        public Form1()
         {
-            // Buton oluşturma
-            Button yeniButon = new Button();
-
-            // Buton özellikleri
-            yeniButon.Text = "Yeni Buton";
-            yeniButon.Name = "btnYeni";
-            yeniButon.Size = new System.Drawing.Size(100, 30);
-            yeniButon.Location = new System.Drawing.Point(50, 50);
-
-            // Buton click event'i
-            yeniButon.Click += new EventHandler(YeniButon_Click);
-
-            // Forma buton ekleme
-            this.Controls.Add(yeniButon);
-        }
-
-        private void YeniButon_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Yeni butona tıklandı!");
+            Button dinamikButon = new Button();
+            dinamikButon.Text = "Dinamik Buton";
+            dinamikButon.Location = new System.Drawing.Point(150, 50);
+            this.Controls.Add(dinamikButon);
         }
     }
 }
