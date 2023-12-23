@@ -14,10 +14,11 @@ namespace ComPort1
     {
         public Form1()
         {
-            Button dinamikButon = new Button();
-            dinamikButon.Text = "Dinamik Buton";
-            dinamikButon.Location = new System.Drawing.Point(150, 50);
-            this.Controls.Add(dinamikButon);
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
