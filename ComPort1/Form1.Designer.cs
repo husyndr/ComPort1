@@ -28,23 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
-            this.comboBox5 = new System.Windows.Forms.ComboBox();
+            this.cBoxCOMPORT = new System.Windows.Forms.ComboBox();
+            this.cBoxPARITYBITS = new System.Windows.Forms.ComboBox();
+            this.cBoxSTOPBITS = new System.Windows.Forms.ComboBox();
+            this.cBoxDATABITS = new System.Windows.Forms.ComboBox();
+            this.cBoxBAUDRATE = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnOpen = new System.Windows.Forms.Button();
+            this.btnClose = new System.Windows.Forms.Button();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.button3 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.btnSendData = new System.Windows.Forms.Button();
+            this.tBoxDataOut = new System.Windows.Forms.TextBox();
+            this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -56,11 +58,11 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.comboBox5);
-            this.groupBox1.Controls.Add(this.comboBox4);
-            this.groupBox1.Controls.Add(this.comboBox3);
-            this.groupBox1.Controls.Add(this.comboBox2);
-            this.groupBox1.Controls.Add(this.comboBox1);
+            this.groupBox1.Controls.Add(this.cBoxBAUDRATE);
+            this.groupBox1.Controls.Add(this.cBoxDATABITS);
+            this.groupBox1.Controls.Add(this.cBoxSTOPBITS);
+            this.groupBox1.Controls.Add(this.cBoxPARITYBITS);
+            this.groupBox1.Controls.Add(this.cBoxCOMPORT);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(286, 189);
@@ -68,45 +70,65 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Com Port Control";
             // 
-            // comboBox1
+            // cBoxCOMPORT
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(127, 26);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(141, 24);
-            this.comboBox1.TabIndex = 0;
+            this.cBoxCOMPORT.FormattingEnabled = true;
+            this.cBoxCOMPORT.Location = new System.Drawing.Point(127, 26);
+            this.cBoxCOMPORT.Name = "cBoxCOMPORT";
+            this.cBoxCOMPORT.Size = new System.Drawing.Size(141, 24);
+            this.cBoxCOMPORT.TabIndex = 0;
             // 
-            // comboBox2
+            // cBoxPARITYBITS
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(127, 146);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(141, 24);
-            this.comboBox2.TabIndex = 1;
+            this.cBoxPARITYBITS.FormattingEnabled = true;
+            this.cBoxPARITYBITS.Items.AddRange(new object[] {
+            "None",
+            "Odd",
+            "Even"});
+            this.cBoxPARITYBITS.Location = new System.Drawing.Point(127, 146);
+            this.cBoxPARITYBITS.Name = "cBoxPARITYBITS";
+            this.cBoxPARITYBITS.Size = new System.Drawing.Size(141, 24);
+            this.cBoxPARITYBITS.TabIndex = 1;
+            this.cBoxPARITYBITS.Text = "None";
             // 
-            // comboBox3
+            // cBoxSTOPBITS
             // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(127, 116);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(141, 24);
-            this.comboBox3.TabIndex = 2;
+            this.cBoxSTOPBITS.FormattingEnabled = true;
+            this.cBoxSTOPBITS.Items.AddRange(new object[] {
+            "one",
+            "two"});
+            this.cBoxSTOPBITS.Location = new System.Drawing.Point(127, 116);
+            this.cBoxSTOPBITS.Name = "cBoxSTOPBITS";
+            this.cBoxSTOPBITS.Size = new System.Drawing.Size(141, 24);
+            this.cBoxSTOPBITS.TabIndex = 2;
+            this.cBoxSTOPBITS.Text = "one";
             // 
-            // comboBox4
+            // cBoxDATABITS
             // 
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(127, 86);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(141, 24);
-            this.comboBox4.TabIndex = 3;
+            this.cBoxDATABITS.FormattingEnabled = true;
+            this.cBoxDATABITS.Items.AddRange(new object[] {
+            "5",
+            "6",
+            "7",
+            "8"});
+            this.cBoxDATABITS.Location = new System.Drawing.Point(127, 86);
+            this.cBoxDATABITS.Name = "cBoxDATABITS";
+            this.cBoxDATABITS.Size = new System.Drawing.Size(141, 24);
+            this.cBoxDATABITS.TabIndex = 3;
+            this.cBoxDATABITS.Text = "8";
             // 
-            // comboBox5
+            // cBoxBAUDRATE
             // 
-            this.comboBox5.FormattingEnabled = true;
-            this.comboBox5.Location = new System.Drawing.Point(127, 56);
-            this.comboBox5.Name = "comboBox5";
-            this.comboBox5.Size = new System.Drawing.Size(141, 24);
-            this.comboBox5.TabIndex = 4;
+            this.cBoxBAUDRATE.FormattingEnabled = true;
+            this.cBoxBAUDRATE.Items.AddRange(new object[] {
+            "2400",
+            "4800",
+            "9600"});
+            this.cBoxBAUDRATE.Location = new System.Drawing.Point(127, 56);
+            this.cBoxBAUDRATE.Name = "cBoxBAUDRATE";
+            this.cBoxBAUDRATE.Size = new System.Drawing.Size(141, 24);
+            this.cBoxBAUDRATE.TabIndex = 4;
+            this.cBoxBAUDRATE.Text = "9600";
             // 
             // label1
             // 
@@ -156,31 +178,33 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.progressBar1);
-            this.groupBox2.Controls.Add(this.button2);
-            this.groupBox2.Controls.Add(this.button1);
+            this.groupBox2.Controls.Add(this.btnClose);
+            this.groupBox2.Controls.Add(this.btnOpen);
             this.groupBox2.Location = new System.Drawing.Point(12, 207);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(200, 107);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             // 
-            // button1
+            // btnOpen
             // 
-            this.button1.Location = new System.Drawing.Point(11, 21);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(88, 33);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Open";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnOpen.Location = new System.Drawing.Point(11, 21);
+            this.btnOpen.Name = "btnOpen";
+            this.btnOpen.Size = new System.Drawing.Size(88, 33);
+            this.btnOpen.TabIndex = 0;
+            this.btnOpen.Text = "Open";
+            this.btnOpen.UseVisualStyleBackColor = true;
+            this.btnOpen.Click += new System.EventHandler(this.btnOpen_Click);
             // 
-            // button2
+            // btnClose
             // 
-            this.button2.Location = new System.Drawing.Point(105, 21);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(87, 33);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Close";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnClose.Location = new System.Drawing.Point(105, 21);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(87, 33);
+            this.btnClose.TabIndex = 1;
+            this.btnClose.Text = "Close";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // progressBar1
             // 
@@ -189,35 +213,37 @@
             this.progressBar1.Size = new System.Drawing.Size(181, 29);
             this.progressBar1.TabIndex = 2;
             // 
-            // button3
+            // btnSendData
             // 
-            this.button3.Location = new System.Drawing.Point(228, 212);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(69, 101);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "Send Data";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnSendData.Location = new System.Drawing.Point(218, 212);
+            this.btnSendData.Name = "btnSendData";
+            this.btnSendData.Size = new System.Drawing.Size(79, 101);
+            this.btnSendData.TabIndex = 2;
+            this.btnSendData.Text = "Send Data";
+            this.btnSendData.UseVisualStyleBackColor = true;
+            this.btnSendData.Click += new System.EventHandler(this.btnSendData_Click);
             // 
-            // textBox1
+            // tBoxDataOut
             // 
-            this.textBox1.Location = new System.Drawing.Point(318, 12);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(319, 301);
-            this.textBox1.TabIndex = 3;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.tBoxDataOut.Location = new System.Drawing.Point(318, 12);
+            this.tBoxDataOut.Multiline = true;
+            this.tBoxDataOut.Name = "tBoxDataOut";
+            this.tBoxDataOut.Size = new System.Drawing.Size(319, 301);
+            this.tBoxDataOut.TabIndex = 3;
+            this.tBoxDataOut.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(645, 323);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.tBoxDataOut);
+            this.Controls.Add(this.btnSendData);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "Form1";
-            this.Text = "P";
+            this.Text = "ComPort v1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -234,17 +260,18 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBox5;
-        private System.Windows.Forms.ComboBox comboBox4;
-        private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cBoxBAUDRATE;
+        private System.Windows.Forms.ComboBox cBoxDATABITS;
+        private System.Windows.Forms.ComboBox cBoxSTOPBITS;
+        private System.Windows.Forms.ComboBox cBoxPARITYBITS;
+        private System.Windows.Forms.ComboBox cBoxCOMPORT;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.ProgressBar progressBar1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.Button btnOpen;
+        private System.Windows.Forms.Button btnSendData;
+        private System.Windows.Forms.TextBox tBoxDataOut;
+        private System.IO.Ports.SerialPort serialPort1;
     }
 }
 
